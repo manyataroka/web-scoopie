@@ -2,7 +2,7 @@ import React from "react";
 import "./Signup.css";
 import { Link } from "react-router-dom";
 import icecreamImage from "../assets/signinicecream.jpg";
-
+import hideeye from "../assets/hideeye.jpg";
 const Signup = () => {
   return (
     <div className="signup-container">
@@ -19,7 +19,9 @@ const Signup = () => {
         <label>Password</label>
         <div className="password-input">
           <input type="password" placeholder="Enter your password" />
-          <span className="eye-icon">👁️</span>
+          <span className="eye-icon">
+            <img src={hideeye} alt="Eye Icon" />
+          </span>
         </div>
 
         <div className="terms">

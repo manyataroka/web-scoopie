@@ -22,6 +22,9 @@ function Homepage() {
         </nav>
         <div className="nav-icons">
           <Link to="/signin">
+            <button className="signin-btn">Sign In</button>
+          </Link>
+          <Link to="/signin">
             <img src={personIcon} alt="Profile" />
           </Link>
           <img src={cartIcon} alt="Cart" />

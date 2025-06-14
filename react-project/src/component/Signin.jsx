@@ -2,6 +2,7 @@ import React from "react";
 import "./Signin.css";
 import { Link } from "react-router-dom";
 import icecream from "../assets/signinicecream.jpg";
+import hideeye from "../assets/hideeye.jpg"; // Import the hideeye.jpg image
 
 const Signin = () => {
   return (
@@ -16,7 +17,9 @@ const Signin = () => {
         <label>Password</label>
         <div className="password-input">
           <input type="password" placeholder="Enter your password" />
-          <span className="eye-icon">👁️</span>
+          <span className="eye-icon">
+            <img src={hideeye} alt="Eye Icon" />
+          </span>
         </div>
 
         <div className="signin-options">

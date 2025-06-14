@@ -46,10 +46,15 @@
   }
   
   .eye-icon {
-    position: absolute;
-    right: 10px;
-    top: 12px;
-    cursor: pointer;
+    position: absolute; 
+    right: 10px; 
+    cursor: pointer; 
+  }
+  
+  .eye-icon img {
+    width: 20px; 
+    height: 20px;
+    object-fit: contain; 
   }
   
   .terms {
