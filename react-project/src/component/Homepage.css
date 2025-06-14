@@ -1,0 +1,74 @@
+.homepage {
+    font-family: Arial, sans-serif;
+    background-color: #ffe6eb;
+    color: #333;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #ffe6eb;
+  }
+  
+  .logo {
+    height: 60px;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+  
+  .nav-links li {
+    cursor: pointer;
+  }
+  
+  .nav-links li a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .nav-icons img {
+    height: 24px;
+    margin-left: 1.2rem;
+    cursor: pointer;
+  }
+  
+  .main-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    gap: 2rem;
+    flex: 1;
+    flex-wrap: wrap;
+  }
+  
+  .image-container img {
+    max-width: 400px;
+    border-radius: 20px;
+  }
+  
+  .content-container {
+    max-width: 600px;
+  }
+  
+  .main-heading {
+    font-size: 3rem;
+    color: #ff69b4;
+    margin-bottom: 1rem;
+  }
+  
+  .welcome-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  
