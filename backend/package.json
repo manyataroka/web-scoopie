@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "scoopie backend",
   "scripts": {
     "dev": "bun --hot server.js"
@@ -13,3 +14,13 @@
     "sequelize": "^6.37.7"
   }
 }
+=======
+  "dependencies": {
+    "express": "^4.18.2",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.0",
+    "cors": "^2.8.5",
+    "mongoose": "^7.0.3"
+  }
+}
+>>>>>>> c37fb46 (push to web-scoopie)
