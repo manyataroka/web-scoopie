@@ -1,28 +1,49 @@
-import jwt from "jsonwebtoken";
-import dotenv from "dotenv";
-dotenv.config();
+const jwt = require('jsonwebtoken');
 
-//Middleware to verify JWT token
-export function authenticateToken(req, res, next) {
-    //Skip token verification for the login route
-    if (req.path === '/login') {
-        return next();
+// Generate access token
+const generateToken = (userId, email, role) => {
+  return jwt.sign(
+    { 
+      userId, 
+      email, 
+      role 
+    },
+    process.env.JWT_SECRET,
+    { 
+      expiresIn: '1h' 
     }
-    //Get the token from the Authorization header
-    const token = req.headers['authorization']?.split(' ')[1];
+  );
+};
 
-    if (!token) {
-        return res.status(401)
-        .send({ message: "Access denied. No token provided." });
+// Generate refresh token
+const generateRefreshToken = (userId) => {
+  return jwt.sign(
+    { 
+      userId,
+      type: 'refresh' 
+    },
+    process.env.JWT_SECRET,
+    { 
+      expiresIn: '7d' 
     }
+  );
+};
 
-    jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-        if (err) {
-            return res.status(403)
-            .send("Invalid or expired token.");
-        }
-    
-        req.user = decoded; // Attach decoded payload to request object
-        next(); // Proceed to the next middleware or route handler
-    });
-}
+// Verify refresh token
+const verifyRefreshToken = (refreshToken) => {
+  try {
+    const decoded = jwt.verify(refreshToken, process.env.JWT_SECRET);
+    if (decoded.type !== 'refresh') {
+      throw new Error('Invalid token type');
+    }
+    return decoded;
+  } catch (error) {
+    throw error;
+  }
+};
+
+module.exports = {
+  generateToken,
+  generateRefreshToken,
+  verifyRefreshToken
+};
