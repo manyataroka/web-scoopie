@@ -12,6 +12,12 @@ const { authenticateToken } = require('../middleware/auth');
 // Public routes
 router.post('/register', register);
 router.post('/login', login);
+router.get('/login',(req,res)=>{
+  res.json({
+    success: true,
+    message: 'Login route is working!'
+  });
+})
 
 // Protected routes (require authentication)
 router.get('/profile', authenticateToken, getProfile);

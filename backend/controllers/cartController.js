@@ -3,6 +3,7 @@ const User = require('../models/User');
 
 // Add item to cart
 const addToCart = async (req, res) => {
+  console.log(req.body);
   try {
     const { productId, productName, productPrice, quantity = 1, productImage } = req.body;
     const userId = req.user.id;

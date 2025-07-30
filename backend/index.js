@@ -1,25 +1,26 @@
-const express=require("express");
-const { connection } = require("./Database/db");
-//const { connection } = require("./Database/db");
-// const { connection } = require("./Database/db.js");
-const{Users} = require("./model/userSchema.js");
-const{router}=require("./routes/userRoute.js");
-const cors=require("cors");
+const express = require("express");
+const { testConnection: connection } = require("./Database/db");
+const router = require("./routes/authRoutes.js");
+const cartRouter = require("./routes/cartRoutes.js");
+const cors = require("cors");
 const app = express();
+const PORT = 5002;
 
+// CORS setup
+app.use(cors({
+  origin: "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+}));
 
+// Body parser middleware
+app.use(express.json()); // Parses application/json
+app.use(express.urlencoded({ extended: true })); // Parses application/x-www-form-urlencoded
 
-const PORT=5000;
-app.use(cors());
-app.use(express.json());
-app.use(router);
-connection();
+// Routes
+app.use("/api/auth", router);
+app.use("/api/cart", cartRouter);
 
-// app.get("/",(req,res)=>{
-//     res.send(`Server is running on port ${PORT}`);
-// });
-
-// connection();
-app.listen(PORT,()=>{
-    console.log(`Server is running on port ${PORT}`);
+// Server start
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
