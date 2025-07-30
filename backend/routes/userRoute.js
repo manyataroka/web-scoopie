@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
 const { authenticateToken, requireAdmin } = require('../middleware/auth');
+const { Op } = require('sequelize');
 
 // Get all users (admin only)
 router.get('/', authenticateToken, requireAdmin, async (req, res) => {
@@ -10,11 +11,11 @@ router.get('/', authenticateToken, requireAdmin, async (req, res) => {
     const offset = (page - 1) * limit;
 
     const whereClause = search ? {
-      [require('sequelize').Op.or]: [
-        { username: { [require('sequelize').Op.iLike]: `%${search}%` } },
-        { email: { [require('sequelize').Op.iLike]: `%${search}%` } },
-        { firstName: { [require('sequelize').Op.iLike]: `%${search}%` } },
-        { lastName: { [require('sequelize').Op.iLike]: `%${search}%` } }
+      [Op.or]: [
+        { username: { [Op.iLike]: `%${search}%` } },
+        { email: { [Op.iLike]: `%${search}%` } },
+        { firstName: { [Op.iLike]: `%${search}%` } },
+        { lastName: { [Op.iLike]: `%${search}%` } }
       ]
     } : {};
 

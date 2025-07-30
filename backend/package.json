@@ -1,20 +1,22 @@
 {
-  "name": "scoopie backend",
+  "name": "scoopie-backend",
+  "version": "1.0.0",
+  "description": "Scoopie Ice Cream Backend API",
+  "main": "simpleServer.js",
   "scripts": {
-    "dev": "bun --hot server.js"
+    "start": "node simpleServer.js",
+    "dev": "nodemon simpleServer.js"
   },
   "dependencies": {
-    "bcryptjs": "^3.0.2",
-    "cors": "^2.8.5",
-    "crypto": "^1.0.1",
-    "dotenv": "^16.4.5",
     "express": "^4.18.2",
-    "jsonwebtoken": "^9.0.2",
-    "multer": "^2.0.2",
-    "nodemailer": "^6.10.1",
-    "pg": "^8.16.3",
-    "sequelize": "^6.37.7",
-    "sqlite3": "^5.1.7",
-    "twilio": "^4.23.0"
+    "cors": "^2.8.5",
+    "bcryptjs": "^3.0.2",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
   }
 }

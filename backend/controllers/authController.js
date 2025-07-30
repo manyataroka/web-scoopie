@@ -44,16 +44,12 @@ const register = async (req, res) => {
 
     // Generate token
     const token = generateToken(user.id, user.email, user.role);
-    const refreshToken = generateRefreshToken(user.id);
 
     res.status(201).json({
       success: true,
       message: 'User registered successfully',
-      data: {
-        user: user.toJSON(),
-        token,
-        refreshToken
-      }
+      user: user.toJSON(),
+      token
     });
 
   } catch (error) {
@@ -78,7 +74,7 @@ const register = async (req, res) => {
 // Login user
 const login = async (req, res) => {
   try {
-    const { login, password } = req.body; // login can be email or username
+    const { login, password } = req.body;
 
     // Validation
     if (!login || !password) {
@@ -122,18 +118,14 @@ const login = async (req, res) => {
       });
     }
 
-    // Generate tokens
+    // Generate token
     const token = generateToken(user.id, user.email, user.role);
-    const refreshToken = generateRefreshToken(user.id);
 
     res.json({
       success: true,
       message: 'Login successful',
-      data: {
-        user: user.toJSON(),
-        token,
-        refreshToken
-      }
+      user: user.toJSON(),
+      token
     });
 
   } catch (error) {
